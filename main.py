@@ -75,7 +75,7 @@ class TicketSelect(Select):
         
         await interaction.response.send_message(f"تم فتح التذكرة بنجاح! {channel.mention}", ephemeral=True)
         
-        # إنشاء الـ Embed والشكل المطابق للطلب
+        # إنشاء الـ Embed والشكل المطابق لفتح التذاكر
         embed = discord.Embed(
             description=f"أهلاً بك {interaction.user.mention} .. تشكرك لتواصلك معنا بخصوص {self.values[0]}.\n\n. سيتم الرد عليك من قبل فريق الدعم الفني أقرب وقت ممكن .",
             color=0x2b2d31
@@ -103,12 +103,9 @@ async def on_message(message):
         return
 
     if message.content.startswith('!ticket'):
-        embed = discord.Embed(
-            title="اهلا بكم في ما تريكس",
-            description="فريقي متواجد لخدمتك .. اختر سبب فتح التذكرة وسيتم الرد عليك",
-            color=0xf1c40f
-        )
-        embed.set_image(url="https://cdn.discordapp.com/emojis/1553916794308399125.webp?size=96")
+        embed = discord.Embed(color=0x2b2d31)
+        # استبدل الـ LINK أدناه برابط الصورة البانر الذي تريده
+        embed.set_image(url="https://cdn.discordapp.com/attachments/1196210736465191084/1554322852814266458/Gemini_Generated_Image_sc9k0sc9k0sc9k0s.jpg?ex=6abc7776&is=6abb25f6&hm=903b2efb434468d34a6c24b64217a9b45b67a2e391c952ac4ebb7d0b69b55401&")
         await message.channel.send(embed=embed, view=TicketView())
 
 if __name__ == "__main__":
